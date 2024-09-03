@@ -11,8 +11,11 @@
  # SPDX-License-Identifier: MIT
 
  '''
+import RPi.GPIO as GPIO
 import multi_half_bridge_py as mhb
 from time import sleep
+
+print(mhb.__file__)
 
 # Tle94112 Object on Shield 1
 controller = mhb.Tle94112Rpi()
@@ -37,6 +40,16 @@ motor.begin()
 motor.start(255)
 
 # Clear all errors to start clean
+
+
+
+#GPIO.setmode (GPIO.BCM)
+#GPIO.setup (26, GPIO.OUT)
+#GPIO.output(26, True)
+#sleep(1)
+#GPIO.output(26, False)
+#sleep(1)
+sleep(1)
 controller.clearErrors()
 
 print("Motor active, starting loop.\n")

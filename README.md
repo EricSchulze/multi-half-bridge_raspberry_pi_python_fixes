@@ -28,11 +28,6 @@ C++ library of Infineon's Multi Half-Bridge IC controllers.
         <td><img src="https://github.com/infineon/multi-half-bridge/wiki/img/rpi-logo.png" width=200></td>
     </tr>
     <tr>
-        <td style="text-align: center"><a href="https://github.com/Infineon/arduino-multi-half-bridge">Arduino Library</a></td>
-        <td style="text-align: center"></td>
-        <td style="text-align: center"><a href="https://pypi.org/project/multi-half-bridge/">RPi Python Library</td>
-    </tr>
-    <tr>
         <td style="text-align: center"><a href="https://github.com/Infineon/multi-half-bridge/wiki/Arduino-API">Arduino API</a></td>
         <td style="text-align: center"><a href="https://github.com/Infineon/multi-half-bridge/wiki/WICED-API">WICED API</a></td>
         <td style="text-align: center"><a href="https://github.com/Infineon/multi-half-bridge/wiki/RPi-API">RPi API</a><br><a href="https://github.com/Infineon/multi-half-bridge/wiki/Py-API">RPi Python API</a></td>
@@ -46,23 +41,18 @@ C++ library of Infineon's Multi Half-Bridge IC controllers.
 
 <table>
     <tr>
-        <td><img src="https://github.com/infineon/multi-half-bridge/wiki/img/mtb-logo.png" width=200></td>
         <td><img src="https://github.com/infineon/multi-half-bridge/wiki/img/cross-platform.png" width=200></td>
     </tr>
     <tr>
-        <td style="text-align: center"><a href="https://github.com/Infineon/multi-half-bridge/wiki/ModusToolbox-API">ModusToolbox API</a></td>
         <td style="text-align: center"><a href="https://github.com/Infineon/multi-half-bridge/wiki/TLE94112-API/">TLE94112 API</a><br><a href="https://github.com/Infineon/multi-half-bridge/wiki/TLE94112Motor-API">TLE94112Motor API</a></td>
     </tr>
     <tr>
-        <td style="text-align: center"><a href="https://github.com/Infineon/multi-half-bridge/wiki/ModusToolbox-Getting-Started">Getting Started</a></td>
         <td style="text-align: center"><a href="https://github.com/Infineon/multi-half-bridge/wiki/Porting-Guide">Porting Guide</a></td>
     </tr>
 </table>
 
 ## More Information
-
-* [Wiki](https://github.com/Infineon/multi-half-bridge/wiki/Home) - A complete library documentation
-* [API Reference Guide](https://infineon.github.io/multi-half-bridge/index.html) - A detailed explanation of the API
+The complete library and project documentation can be found in the [Wiki](https://github.com/Infineon/multi-half-bridge/wiki/Home).
 
 ## License
 
