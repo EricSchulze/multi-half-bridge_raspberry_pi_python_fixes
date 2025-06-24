@@ -39,8 +39,8 @@ motor.begin()
 
 # Switch the load on
 motor.start(255)
-
-sleep(3)
+print("Hallo2")
+sleep(10)
 
 # Switch the load off (set outputs to floating state)
 motor.coast()

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BCM_VERSION=1.68
+BCM_VERSION=1.73
 if [ "$EUID" -eq 0 ]
 then
 	echo "Please do not execute this script as root."
@@ -39,7 +39,7 @@ echo "Compiling BCM2835 library..."
 tar zxvf bcm2835-$BCM_VERSION.tar.gz
 cd bcm2835-$BCM_VERSION
 
-./configure CFLAGS=$CFLAGS
+./configure CFLAGS="-fPIC $CFLAGS"
 make
 
 echo "Installing BCM2835 library..."

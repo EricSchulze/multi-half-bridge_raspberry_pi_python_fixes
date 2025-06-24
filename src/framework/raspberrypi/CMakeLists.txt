@@ -34,11 +34,11 @@ set(Headers
 
 # List source files
 set(Sources
-    ../../corelib/tle94112-logger.cpp
-    ../../corelib/tle94112.cpp
-    ../../corelib/tle94112-motor.cpp
-    ../../pal/gpio.cpp
-    ../../pal/spic.cpp
+    ../../../corelib/tle94112-logger.cpp
+    ../../../corelib/tle94112.cpp
+    ../../../corelib/tle94112-motor.cpp
+    ../../../pal/gpio.cpp
+    ../../../pal/spic.cpp
     pal/gpio-rpi.cpp
     pal/logger-rpi.cpp
     pal/spic-rpi.cpp
@@ -73,6 +73,7 @@ set_target_properties(bcm2835 PROPERTIES IMPORTED_LOCATION ${bcm2835_dir})
 target_link_libraries(multi_half_bridge_py PUBLIC
     ${mhbcore}
     bcm2835
+    cap
 )
 
 # Compile definitions
