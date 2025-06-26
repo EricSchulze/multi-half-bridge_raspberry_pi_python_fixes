@@ -39,7 +39,7 @@ echo "Compiling BCM2835 library..."
 tar zxvf bcm2835-$BCM_VERSION.tar.gz
 cd bcm2835-$BCM_VERSION
 
-./configure CFLAGS="-fPIC $CFLAGS"
+./configure CFLAGS=$CFLAGS
 make
 
 echo "Installing BCM2835 library..."

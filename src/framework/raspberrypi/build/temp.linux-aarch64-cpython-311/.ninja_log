@@ -1,0 +1,25 @@
+# ninja log v5
+2	74	1750855222946606035	CMakeFiles/multi-half-bridge-corelib.dir/home/pi/Desktop/multi-half-bridge_raspberry_pi_python_fixes/src/corelib/tle94112-logger.cpp.o	4f9a43d2b928ad76
+75	127	1750855222998605590	CMakeFiles/multi-half-bridge-corelib.dir/pal/logger-rpi.cpp.o	358cbdfd4e66a4b
+4	180	1750855223046605180	CMakeFiles/multi-half-bridge-corelib.dir/home/pi/Desktop/multi-half-bridge_raspberry_pi_python_fixes/src/pal/gpio.cpp.o	2a31a310ea5510dd
+7	181	1750855223042605214	CMakeFiles/multi-half-bridge-corelib.dir/home/pi/Desktop/multi-half-bridge_raspberry_pi_python_fixes/src/pal/spic.cpp.o	e66c07f3d7263599
+180	511	1750855223382602307	CMakeFiles/multi-half-bridge-corelib.dir/pal/timer-rpi.cpp.o	e15a0c79e2f4baed
+7	529	1750855223394602204	CMakeFiles/multi-half-bridge-corelib.dir/pal/gpio-rpi.cpp.o	fe4dbba79baa68
+127	562	1750855223434601862	CMakeFiles/multi-half-bridge-corelib.dir/pal/spic-rpi.cpp.o	d959acefa42c55c6
+529	611	1750855223478601486	CMakeFiles/multi_half_bridge_py.dir/home/pi/Desktop/multi-half-bridge_raspberry_pi_python_fixes/src/corelib/tle94112-logger.cpp.o	dad69b0ae16555af
+181	786	1750855223654599981	CMakeFiles/multi-half-bridge-corelib.dir/wrapper/tle94112-rpi.cpp.o	c0c1c07888f1b387
+562	912	1750855223778598920	CMakeFiles/multi_half_bridge_py.dir/home/pi/Desktop/multi-half-bridge_raspberry_pi_python_fixes/src/corelib/tle94112.cpp.o	91a4d6b01f4ed206
+787	928	1750855223794598783	CMakeFiles/multi_half_bridge_py.dir/home/pi/Desktop/multi-half-bridge_raspberry_pi_python_fixes/src/pal/gpio.cpp.o	26f3b806782d0856
+611	1001	1750855223874598099	CMakeFiles/multi_half_bridge_py.dir/home/pi/Desktop/multi-half-bridge_raspberry_pi_python_fixes/src/corelib/tle94112-motor.cpp.o	fa6b4c6a714d4582
+913	1019	1750855223886597997	CMakeFiles/multi_half_bridge_py.dir/home/pi/Desktop/multi-half-bridge_raspberry_pi_python_fixes/src/pal/spic.cpp.o	916c558f8a56d35f
+1001	1065	1750855223938597552	CMakeFiles/multi_half_bridge_py.dir/pal/logger-rpi.cpp.o	b7d50f59c90f2c0
+3	1150	1750855224018596868	CMakeFiles/multi-half-bridge-corelib.dir/home/pi/Desktop/multi-half-bridge_raspberry_pi_python_fixes/src/corelib/tle94112-motor.cpp.o	77b19a2972a2e591
+928	1196	1750855224062596492	CMakeFiles/multi_half_bridge_py.dir/pal/gpio-rpi.cpp.o	61a634ebcf0aea46
+3	1203	1750855224070596423	CMakeFiles/multi-half-bridge-corelib.dir/home/pi/Desktop/multi-half-bridge_raspberry_pi_python_fixes/src/corelib/tle94112.cpp.o	706da20b4063dd31
+1065	1222	1750855224094596218	CMakeFiles/multi_half_bridge_py.dir/pal/timer-rpi.cpp.o	1e68fe342b2b1787
+1022	1259	1750855224130595910	CMakeFiles/multi_half_bridge_py.dir/pal/spic-rpi.cpp.o	bd4bf025968468e0
+1151	1356	1750855224226595089	CMakeFiles/multi_half_bridge_py.dir/wrapper/tle94112-rpi.cpp.o	9202f07963923118
+1196	22587	1750855244406422460	CMakeFiles/multi_half_bridge_py.dir/wrapper/tle94112-pybind.cpp.o	73f6c54335bbdc94
+512	43662	1750855266530233068	CMakeFiles/multi-half-bridge-corelib.dir/wrapper/tle94112-pybind.cpp.o	38248f781be13856
+43663	43821	1750855266642232109	libmulti-half-bridge-corelib.a	ecd9ae9fa7ab5c01
+43821	67644	1750855290518027570	/home/pi/Desktop/multi-half-bridge_raspberry_pi_python_fixes/src/framework/raspberrypi/build/lib.linux-aarch64-cpython-311/multi_half_bridge_py.cpython-311-aarch64-linux-gnu.so	58b0149b0c590855

@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/pi/Desktop/multi-half-bridge_raspberry_pi_python_fixes/src/framework/raspberrypi/build/temp.linux-aarch64-cpython-311/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
