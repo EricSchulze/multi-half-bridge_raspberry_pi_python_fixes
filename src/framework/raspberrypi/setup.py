@@ -120,7 +120,7 @@ setup(
         "Operating System :: OS Independent",
     ],
     zip_safe=False,
-    install_requires=[
-        "pybind11>=2.6.0"
-    ],
+   # install_requires=[
+   #     "pybind11>=2.6.0"
+   # ],
 )
