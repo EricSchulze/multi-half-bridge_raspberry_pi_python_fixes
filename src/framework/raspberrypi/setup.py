@@ -94,7 +94,7 @@ class CMakeBuild(build_ext):
 
         subprocess.check_call(["cmake", ext.sourcedir] + cmake_args, cwd=self.build_temp)
         subprocess.check_call(
-            ["cmake", "--build", "."] + build_args,
+            ["cmake", "--build", ".","--target", "multi_half_bridge_py"] + build_args,
             cwd=self.build_temp
         )
 # The information here can also be placed in setup.cfg - better separation of
@@ -110,7 +110,7 @@ setup(
         'Wiki': 'https://github.com/Infineon/multi-half-bridge/wiki',
         'IC Products Page': 'https://www.infineon.com/cms/de/product/power/motor-control-ics/brushed-dc-motor-driver-ics/multi-half-bridge-ics/'
     },
-    ext_modules=[CMakeExtension("multi_half_bridge_py", sourcedir=".")],
+    ext_modules=[CMakeExtension("multi_half_bridge_py")],
     cmdclass={"build_ext": CMakeBuild},
     license='MIT',
     url='https://pypi.org/project/multi-half-bridge/',
@@ -120,7 +120,4 @@ setup(
         "Operating System :: OS Independent",
     ],
     zip_safe=False,
-   # install_requires=[
-   #     "pybind11>=2.6.0"
-   # ],
 )

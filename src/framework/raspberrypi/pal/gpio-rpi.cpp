@@ -1,5 +1,5 @@
 /**
- * @file        gpio-rpi.cpp
+ * @file        
  * @brief       TLE94112 GPIO Raspberry Pi API
  * @copyright   Copyright (c) 2019-2021 Infineon Technologies AG
  *
