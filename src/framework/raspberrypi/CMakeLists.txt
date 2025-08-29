@@ -9,14 +9,6 @@ set(mhbcore multi-half-bridge-corelib)
 # Project name and languages
 project(${mhbcore} CXX C)
 
-
-
-# Manually add Pybind11 path if not found automatically is needed to find pybind11
-if (NOT DEFINED PYBIND11_INCLUDE_DIRS)
-    find_package(pybind11 REQUIRED)
-    set(PYBIND11_INCLUDE_DIRS ${pybind11_INCLUDE_DIRS})
-endif()
-
 # Include directories
 include_directories(
     ../../config/
@@ -26,6 +18,19 @@ include_directories(
     wrapper/
     ${PYBIND11_INCLUDE_DIRS}
 )
+
+file(GLOB CoreSources CONFIGURE_DEPENDS ../../corelib/*.cpp ../../pal/*.cpp)
+add_library(${mhbcore} ${CoreSources})
+
+
+
+# Manually add Pybind11 path if not found automatically is needed to find pybind11
+if (NOT DEFINED PYBIND11_INCLUDE_DIRS)
+    find_package(pybind11 REQUIRED)
+    set(PYBIND11_INCLUDE_DIRS ${pybind11_INCLUDE_DIRS})
+endif()
+
+
 
 # Set header and source files
 set(Headers
@@ -62,6 +67,7 @@ set_target_properties(bcm2835 PROPERTIES IMPORTED_LOCATION ${bcm2835_dir})
 
 # Link libraries
 target_link_libraries(multi_half_bridge_py PUBLIC
+    ${mhbcore}
     bcm2835
     cap
 )
