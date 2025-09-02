@@ -51,19 +51,15 @@ set(Headers
 file(GLOB Sources CONFIGURE_DEPENDS src/corelib/*.cpp)
 
 # Add Library
-add_library(${mhbcore} STATIC ${Sources} ${Headers})
+add_library(${mhbcore} ${Sources} ${Headers})
 
-# Make the library available for subdirectories
-#set_target_properties(${mhbcore} PROPERTIES 
-#    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
-#    LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
-#)
+
 
 # Currently only using this target for rasbperry pi host
-if (CMAKE_HOST_UNIX)
+#if (CMAKE_HOST_UNIX)
     # Add directory
-    add_subdirectory(src/framework/raspberrypi)
-endif()
+#    add_subdirectory(src/framework/raspberrypi)
+#endif()
 
 option(SETUP_PROJECT_TESTS "Enable and setup project tests." ON)
 
