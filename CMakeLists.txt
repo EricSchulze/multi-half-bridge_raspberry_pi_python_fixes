@@ -54,10 +54,10 @@ file(GLOB Sources CONFIGURE_DEPENDS src/corelib/*.cpp)
 add_library(${mhbcore} STATIC ${Sources} ${Headers})
 
 # Make the library available for subdirectories
-set_target_properties(${mhbcore} PROPERTIES 
-    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
-    LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
-)
+#set_target_properties(${mhbcore} PROPERTIES 
+#    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
+#    LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
+#)
 
 # Currently only using this target for rasbperry pi host
 if (CMAKE_HOST_UNIX)
