@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.12.4)
 message(WARNING "von raspi <3")
 # Set the correct module path
-set(CMAKE_MODULE_PATH  "${CMAKE_CURRENT_SOURCE_DIR}/../../../cmake")
 
 # Define variables that would come from root CMakeLists.txt
 #set(mhbcore multi-half-bridge-corelib)
@@ -18,15 +17,6 @@ include_directories(
 
 
 # Only create the core library if it doesn't already exist (when not building from root)
-
-
-
-
-# Manually add Pybind11 path if not found automatically is needed to find pybind11
-if (NOT DEFINED PYBIND11_INCLUDE_DIRS)
-    find_package(pybind11 REQUIRED)
-    set(PYBIND11_INCLUDE_DIRS ${pybind11_INCLUDE_DIRS})
-endif()
 
 
 
@@ -65,9 +55,9 @@ set_target_properties(bcm2835 PROPERTIES IMPORTED_LOCATION ${bcm2835_dir})
 
 # Link libraries
 target_link_libraries(multi_half_bridge_py PUBLIC
-    ${mhbcore}
+    multi-half-bridge-corelib
     bcm2835
-    cap
+    cap         #wird benoetigt
 )
 
 # EXAMPLE_VERSION_INFO is defined by setup.py and passed into the C++ code as a
