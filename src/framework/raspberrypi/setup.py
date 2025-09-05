@@ -57,7 +57,7 @@ class CMakeBuild(build_ext):
             # Users can override the generator with CMAKE_GENERATOR in CMake
             # 3.15+.
             if not cmake_generator:
-                cmake_args += ["-GUnix Makefiles"]
+                cmake_args += ["-GNinja"]
         else:
              # Single config generators are handled "normally"
             single_config = any(x in cmake_generator for x in {"NMake", "Ninja"})
@@ -96,6 +96,8 @@ class CMakeBuild(build_ext):
             cwd=self.build_temp
         )
         
+        #this is needed eric because cmake does not put the .so file where setuptools expects it to be
+
         # Find the built .so file and copy it to the expected location
         import glob
         built_so_files = glob.glob(os.path.join(self.build_temp, "**", "*.so"), recursive=True)
@@ -109,18 +111,7 @@ class CMakeBuild(build_ext):
             import shutil
             shutil.copy2(built_so_files[0], self.get_ext_fullpath(ext.name))
 
-        # Find the built .so file and copy it to the expected location
-        import glob
-        so_files = glob.glob(os.path.join(self.build_temp, "**", "*.so"), recursive=True)
-        if so_files:
-            # Copy the .so file to the build_lib directory for setuptools
-            import shutil
-            for so_file in so_files:
-                if "multi_half_bridge_py" in os.path.basename(so_file):
-                    dest_path = os.path.join(os.path.dirname(extdir), os.path.basename(so_file))
-                    print(f"Copying {so_file} to {dest_path}")
-                    shutil.copy2(so_file, dest_path)
-                    break
+
 # The information here can also be placed in setup.cfg - better separation of
 # logic and declaration, and simpler if you include description/version in a file.
 setup(
