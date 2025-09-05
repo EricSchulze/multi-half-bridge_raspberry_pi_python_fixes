@@ -12,7 +12,7 @@ project(${mhbcore} CXX C)
 include_directories(
     pal/
     wrapper/
-    ${PYBIND11_INCLUDE_DIRS}
+  #  ${PYBIND11_INCLUDE_DIRS}
 )
 
 
