@@ -21,6 +21,7 @@ done
 
 if [[ $menuinput == 'Y' || $menuinput == 'y' ]]
 then
+	CFLAGS='-DBCM2835_HAVE_LIBCAP'
 	echo "Installing required packets..."
 	sudo apt-get install libcap2 libcap-dev
 	echo "Add current user to kmem group..."
@@ -29,7 +30,7 @@ then
 	echo 'SUBSYSTEM=="mem", KERNEL=="mem", GROUP="kmem", MODE="0660"' | sudo tee /etc/udev/rules.d/98-mem.rules
 	CFLAGS="-fPIC -DBCM2835_HAVE_LIBCAP"
 else
-	CFLAGS=""
+	CFLAGS=''
 fi
 
 echo "Downloading source for BCM2835 library..."
