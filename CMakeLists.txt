@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12.4)
-
+message(WARNING "von root <3")
 set(CMAKE_MODULE_PATH  "${CMAKE_SOURCE_DIR}/cmake")
 
 set(mhbcore multi-half-bridge-corelib)
@@ -32,7 +32,7 @@ message( STATUS "CMAKE_BUILD_TYPE : ${CMAKE_BUILD_TYPE}" )
 message( STATUS "CMAKE_SYSTEM_NAME : ${CMAKE_SYSTEM_NAME}" )
 message( STATUS "CMAKE_SOURCE_DIR : ${CMAKE_SOURCE_DIR}" )
 
-#include(CompilerSettings)
+include(CompilerSettings)
 
 # Search for include Files
 include_directories(
@@ -53,13 +53,11 @@ file(GLOB Sources CONFIGURE_DEPENDS src/corelib/*.cpp)
 # Add Library
 add_library(${mhbcore} ${Sources} ${Headers})
 
-
-
 # Currently only using this target for rasbperry pi host
-#if (CMAKE_HOST_UNIX)
+if (CMAKE_HOST_UNIX)
     # Add directory
-#    add_subdirectory(src/framework/raspberrypi)
-#endif()
+    add_subdirectory(src/framework/raspberrypi)
+endif()
 
 option(SETUP_PROJECT_TESTS "Enable and setup project tests." ON)
 

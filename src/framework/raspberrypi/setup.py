@@ -92,9 +92,35 @@ class CMakeBuild(build_ext):
 
         subprocess.check_call(["cmake", ext.sourcedir] + cmake_args, cwd=self.build_temp)
         subprocess.check_call(
-            ["cmake", "--build", ".","--target", "multi_half_bridge_py"] + build_args,
+            ["cmake", "--build", ".", "--target", "multi_half_bridge_py"] + build_args,
             cwd=self.build_temp
         )
+        
+        # Find the built .so file and copy it to the expected location
+        import glob
+        built_so_files = glob.glob(os.path.join(self.build_temp, "**", "*.so"), recursive=True)
+        if built_so_files:
+            # Get the expected output directory for this extension
+            expected_dir = os.path.dirname(self.get_ext_fullpath(ext.name))
+            if not os.path.exists(expected_dir):
+                os.makedirs(expected_dir)
+            
+            # Copy the .so file to the expected location
+            import shutil
+            shutil.copy2(built_so_files[0], self.get_ext_fullpath(ext.name))
+
+        # Find the built .so file and copy it to the expected location
+        import glob
+        so_files = glob.glob(os.path.join(self.build_temp, "**", "*.so"), recursive=True)
+        if so_files:
+            # Copy the .so file to the build_lib directory for setuptools
+            import shutil
+            for so_file in so_files:
+                if "multi_half_bridge_py" in os.path.basename(so_file):
+                    dest_path = os.path.join(os.path.dirname(extdir), os.path.basename(so_file))
+                    print(f"Copying {so_file} to {dest_path}")
+                    shutil.copy2(so_file, dest_path)
+                    break
 # The information here can also be placed in setup.cfg - better separation of
 # logic and declaration, and simpler if you include description/version in a file.
 setup(
@@ -108,7 +134,8 @@ setup(
         'Wiki': 'https://github.com/Infineon/multi-half-bridge/wiki',
         'IC Products Page': 'https://www.infineon.com/cms/de/product/power/motor-control-ics/brushed-dc-motor-driver-ics/multi-half-bridge-ics/'
     },
-    ext_modules=[CMakeExtension("multi_half_bridge_py")],
+    py_modules=["multi_half_bridge_py"],  # Include the module directly
+    ext_modules=[CMakeExtension("multi_half_bridge_py", "../../..")], #uses CMakeLists.txt in the root of the repository
     cmdclass={"build_ext": CMakeBuild},
     license='MIT',
     url='https://pypi.org/project/multi-half-bridge/',

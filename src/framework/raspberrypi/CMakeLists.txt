@@ -1,26 +1,24 @@
 cmake_minimum_required(VERSION 3.12.4)
-
+message(WARNING "von raspi <3")
 # Set the correct module path
 set(CMAKE_MODULE_PATH  "${CMAKE_CURRENT_SOURCE_DIR}/../../../cmake")
 
 # Define variables that would come from root CMakeLists.txt
-set(mhbcore multi-half-bridge-corelib)
+#set(mhbcore multi-half-bridge-corelib)
 
 # Project name and languages
 project(${mhbcore} CXX C)
 
 # Include directories
 include_directories(
-    ../../config/
-    ../../corelib/
-    ../../pal/
     pal/
     wrapper/
     ${PYBIND11_INCLUDE_DIRS}
 )
 
-file(GLOB CoreSources CONFIGURE_DEPENDS ../../corelib/*.cpp ../../pal/*.cpp)
-add_library(${mhbcore} ${CoreSources})
+
+# Only create the core library if it doesn't already exist (when not building from root)
+
 
 
 
