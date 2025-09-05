@@ -1,23 +1,17 @@
 cmake_minimum_required(VERSION 3.12.4)
-message(WARNING "von raspi <3")
 # Set the correct module path
 
 # Define variables that would come from root CMakeLists.txt
 #set(mhbcore multi-half-bridge-corelib)
 
 # Project name and languages
-project(${mhbcore} CXX C)
+project(multi_half_bridge_py)
 
 # Include directories
 include_directories(
     pal/
     wrapper/
-  #  ${PYBIND11_INCLUDE_DIRS}
 )
-
-
-# Only create the core library if it doesn't already exist (when not building from root)
-
 
 
 # Set header and source files
@@ -57,7 +51,7 @@ set_target_properties(bcm2835 PROPERTIES IMPORTED_LOCATION ${bcm2835_dir})
 target_link_libraries(multi_half_bridge_py PUBLIC
     multi-half-bridge-corelib
     bcm2835
-    cap         #wird benoetigt
+    cap         
 )
 
 # EXAMPLE_VERSION_INFO is defined by setup.py and passed into the C++ code as a
