@@ -30,8 +30,6 @@ set(Sources
     wrapper/tle94112-pybind.cpp
 )
 
-# Add library
-#add_library(${mhbcore} ${Sources})
 
 # pybind11 integration
 find_package(pybind11 REQUIRED)
@@ -42,6 +40,7 @@ pybind11_add_module(multi_half_bridge_py ${Sources} ${Headers})
 
 # Add Raspberry Pi bcm library dependency
 find_library(bcm2835_dir NAMES libbcm2835.a)
+
 message(STATUS ${bcm2835_dir})
 
 add_library(bcm2835 STATIC IMPORTED)

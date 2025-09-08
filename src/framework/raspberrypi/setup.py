@@ -57,7 +57,7 @@ class CMakeBuild(build_ext):
             # Users can override the generator with CMAKE_GENERATOR in CMake
             # 3.15+.
             if not cmake_generator:
-                cmake_args += ["-GNinja"]
+                cmake_args += ["-GUnix Makefiles"]
         else:
              # Single config generators are handled "normally"
             single_config = any(x in cmake_generator for x in {"NMake", "Ninja"})
@@ -96,8 +96,6 @@ class CMakeBuild(build_ext):
             cwd=self.build_temp
         )
         
-        #this is needed eric because cmake does not put the .so file where setuptools expects it to be
-
         # Find the built .so file and copy it to the expected location
         import glob
         built_so_files = glob.glob(os.path.join(self.build_temp, "**", "*.so"), recursive=True)
@@ -110,7 +108,6 @@ class CMakeBuild(build_ext):
             # Copy the .so file to the expected location
             import shutil
             shutil.copy2(built_so_files[0], self.get_ext_fullpath(ext.name))
-
 
 # The information here can also be placed in setup.cfg - better separation of
 # logic and declaration, and simpler if you include description/version in a file.
