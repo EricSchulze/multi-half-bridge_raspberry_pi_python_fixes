@@ -95,19 +95,7 @@ class CMakeBuild(build_ext):
             ["cmake", "--build", ".", "--target", "multi_half_bridge_py"] + build_args,
             cwd=self.build_temp
         )
-        
-        # Find the built .so file and copy it to the expected location
-        import glob
-        built_so_files = glob.glob(os.path.join(self.build_temp, "**", "*.so"), recursive=True)
-        if built_so_files:
-            # Get the expected output directory for this extension
-            expected_dir = os.path.dirname(self.get_ext_fullpath(ext.name))
-            if not os.path.exists(expected_dir):
-                os.makedirs(expected_dir)
-            
-            # Copy the .so file to the expected location
-            import shutil
-            shutil.copy2(built_so_files[0], self.get_ext_fullpath(ext.name))
+
 
 # The information here can also be placed in setup.cfg - better separation of
 # logic and declaration, and simpler if you include description/version in a file.
@@ -122,7 +110,6 @@ setup(
         'Wiki': 'https://github.com/Infineon/multi-half-bridge/wiki',
         'IC Products Page': 'https://www.infineon.com/cms/de/product/power/motor-control-ics/brushed-dc-motor-driver-ics/multi-half-bridge-ics/'
     },
-    py_modules=["multi_half_bridge_py"],  # Include the module directly
     ext_modules=[CMakeExtension("multi_half_bridge_py", "../../..")], #uses CMakeLists.txt in the root of the repository
     cmdclass={"build_ext": CMakeBuild},
     license='MIT',

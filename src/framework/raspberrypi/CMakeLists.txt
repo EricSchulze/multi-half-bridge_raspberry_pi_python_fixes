@@ -37,6 +37,18 @@ find_package(pybind11 REQUIRED)
 
 pybind11_add_module(multi_half_bridge_py ${Sources} ${Headers})
 
+# Create the directory structure that setuptools expects and copy the library there
+# This is the proper way to handle pybind11 modules with setuptools
+add_custom_command(TARGET multi_half_bridge_py POST_BUILD
+    # Create the lib.linux-aarch64-cpython-311 directory at the right level
+    COMMAND ${CMAKE_COMMAND} -E make_directory 
+        "${CMAKE_BINARY_DIR}/../lib.linux-aarch64-cpython-311"
+    # Copy the built library to where setuptools expects it
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "$<TARGET_FILE:multi_half_bridge_py>"
+        "${CMAKE_BINARY_DIR}/../lib.linux-aarch64-cpython-311/$<TARGET_FILE_NAME:multi_half_bridge_py>"
+    COMMENT "Copying Python module to setuptools expected location"
+)
 
 # Add Raspberry Pi bcm library dependency
 find_library(bcm2835_dir NAMES libbcm2835.a)
