@@ -5,9 +5,6 @@ project(multi_half_bridge_py)
 
 # Include directories for core library and local sources
 include_directories(
-    ../../corelib/           # Core library headers
-    ../../config/            # Configuration headers  
-    ../../pal/               # Platform abstraction headers
     pal/                     # Local platform implementation
     wrapper/                 # Python wrapper
 )
