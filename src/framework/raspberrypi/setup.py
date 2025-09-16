@@ -110,7 +110,7 @@ setup(
         'Wiki': 'https://github.com/Infineon/multi-half-bridge/wiki',
         'IC Products Page': 'https://www.infineon.com/cms/de/product/power/motor-control-ics/brushed-dc-motor-driver-ics/multi-half-bridge-ics/'
     },
-    ext_modules=[CMakeExtension("multi_half_bridge_py", "../../..")], #uses CMakeLists.txt in the root of the repository
+    ext_modules=[CMakeExtension("multi_half_bridge_py", ".")], # Use local CMakeLists.txt
     cmdclass={"build_ext": CMakeBuild},
     license='MIT',
     url='https://pypi.org/project/multi-half-bridge/',

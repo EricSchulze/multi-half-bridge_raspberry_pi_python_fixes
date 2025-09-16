@@ -1,27 +1,26 @@
 cmake_minimum_required(VERSION 3.12.4)
-# Set the correct module path
-
-# Define variables that would come from root CMakeLists.txt
-#set(mhbcore multi-half-bridge-corelib)
 
 # Project name and languages
 project(multi_half_bridge_py)
 
-# Include directories
+# Include directories for core library and local sources
 include_directories(
-    pal/
-    wrapper/
+    ../../corelib/           # Core library headers
+    ../../config/            # Configuration headers  
+    ../../pal/               # Platform abstraction headers
+    pal/                     # Local platform implementation
+    wrapper/                 # Python wrapper
 )
 
-
-# Set header and source files
-set(Headers
-    pal/
-    wrapper/
+# Core library source files
+set(CoreSources
+    ../../corelib/tle94112.cpp
+    ../../corelib/tle94112-motor.cpp
+    ../../corelib/tle94112-logger.cpp
 )
 
-# List source files
-set(Sources
+# Local platform and wrapper source files
+set(LocalSources
     pal/gpio-rpi.cpp
     pal/logger-rpi.cpp
     pal/spic-rpi.cpp
@@ -30,25 +29,18 @@ set(Sources
     wrapper/tle94112-pybind.cpp
 )
 
+# Combine all sources
+set(AllSources ${CoreSources} ${LocalSources})
+
 
 # pybind11 integration
 find_package(pybind11 REQUIRED)
 
 
-pybind11_add_module(multi_half_bridge_py ${Sources} ${Headers})
+pybind11_add_module(multi_half_bridge_py ${AllSources})
 
-# Create the directory structure that setuptools expects and copy the library there
-# This is the proper way to handle pybind11 modules with setuptools
-add_custom_command(TARGET multi_half_bridge_py POST_BUILD
-    # Create the lib.linux-aarch64-cpython-311 directory at the right level
-    COMMAND ${CMAKE_COMMAND} -E make_directory 
-        "${CMAKE_BINARY_DIR}/../lib.linux-aarch64-cpython-311"
-    # Copy the built library to where setuptools expects it
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "$<TARGET_FILE:multi_half_bridge_py>"
-        "${CMAKE_BINARY_DIR}/../lib.linux-aarch64-cpython-311/$<TARGET_FILE_NAME:multi_half_bridge_py>"
-    COMMENT "Copying Python module to setuptools expected location"
-)
+# The module should now be built in the correct location automatically
+# since we're using the local CMakeLists.txt instead of the complex multi-level structure
 
 # Add Raspberry Pi bcm library dependency
 find_library(bcm2835_dir NAMES libbcm2835.a)
@@ -60,7 +52,6 @@ set_target_properties(bcm2835 PROPERTIES IMPORTED_LOCATION ${bcm2835_dir})
 
 # Link libraries
 target_link_libraries(multi_half_bridge_py PUBLIC
-    multi-half-bridge-corelib
     bcm2835
     cap         
 )
