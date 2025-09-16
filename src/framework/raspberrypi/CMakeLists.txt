@@ -39,8 +39,6 @@ find_package(pybind11 REQUIRED)
 
 pybind11_add_module(multi_half_bridge_py ${AllSources})
 
-# The module should now be built in the correct location automatically
-# since we're using the local CMakeLists.txt instead of the complex multi-level structure
 
 # Add Raspberry Pi bcm library dependency
 find_library(bcm2835_dir NAMES libbcm2835.a)
