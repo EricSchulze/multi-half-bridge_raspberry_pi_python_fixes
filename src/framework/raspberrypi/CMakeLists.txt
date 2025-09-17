@@ -9,25 +9,25 @@ include_directories(
     wrapper/                 # Python wrapper
 )
 
-# Core library source files
-set(CoreSources
-    ../../corelib/tle94112.cpp
-    ../../corelib/tle94112-motor.cpp
-    ../../corelib/tle94112-logger.cpp
-)
+
+
+
 
 # Local platform and wrapper source files
-set(LocalSources
+set(Sources
     pal/gpio-rpi.cpp
     pal/logger-rpi.cpp
     pal/spic-rpi.cpp
     pal/timer-rpi.cpp
     wrapper/tle94112-rpi.cpp
     wrapper/tle94112-pybind.cpp
+    ../../corelib/tle94112.cpp
+    ../../corelib/tle94112-motor.cpp
+    ../../corelib/tle94112-logger.cpp
 )
 
 # Combine all sources
-set(AllSources ${CoreSources} ${LocalSources})
+set(AllSources ${Sources} )
 
 
 # pybind11 integration
