@@ -9,10 +9,6 @@ include_directories(
     wrapper/                 # Python wrapper
 )
 
-
-
-
-
 # Local platform and wrapper source files
 set(Sources
     pal/gpio-rpi.cpp
@@ -26,15 +22,14 @@ set(Sources
     ../../corelib/tle94112-logger.cpp
 )
 
-# Combine all sources
-set(AllSources ${Sources} )
 
+# add_subdirectory(tools/pybind11)
 
 # pybind11 integration
 find_package(pybind11 REQUIRED)
 
 
-pybind11_add_module(multi_half_bridge_py ${AllSources})
+pybind11_add_module(multi_half_bridge_py ${Sources})
 
 
 # Add Raspberry Pi bcm library dependency
