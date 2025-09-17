@@ -28,7 +28,7 @@ then
 	sudo adduser $USER kmem
 	echo "Allow write access to /dev/mem by members of kmem group..."
 	echo 'SUBSYSTEM=="mem", KERNEL=="mem", GROUP="kmem", MODE="0660"' | sudo tee /etc/udev/rules.d/98-mem.rules
-	CFLAGS="-fPIC -DBCM2835_HAVE_LIBCAP"
+	#CFLAGS="-fPIC -DBCM2835_HAVE_LIBCAP"
 else
 	CFLAGS=''
 fi
