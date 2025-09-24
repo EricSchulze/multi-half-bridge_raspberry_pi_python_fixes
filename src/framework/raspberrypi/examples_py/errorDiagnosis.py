@@ -126,7 +126,7 @@ while 1:
       if (halfBridge==10):
         hb_val = controller.TLE_HB10
       if (halfBridge==11):
-        hb_val = controller.TLE_HB11
+        hb_val = controller.TLE_HB1
       if (halfBridge==12):
         hb_val = controller.TLE_HB12
       # Read over-current status of this half bridge from chip
@@ -141,7 +141,7 @@ while 1:
         print("\tHB" + hb_val + "\tOver-current detected in high-side switch." + halfBridge)
 
       # Read open load status of this half bridge from chip
-      ol = controller.getHBOpenLoad(hb_val)
+      ol = controller.getHBOpenload(hb_val)
 
       # Check for an open load error in this half bridge
       if (ol):

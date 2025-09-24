@@ -17,9 +17,6 @@ set(Sources
     pal/timer-rpi.cpp
     wrapper/tle94112-rpi.cpp
     wrapper/tle94112-pybind.cpp
-    ../../corelib/tle94112.cpp
-    ../../corelib/tle94112-motor.cpp
-    ../../corelib/tle94112-logger.cpp
 )
 
 
@@ -43,7 +40,8 @@ set_target_properties(bcm2835 PROPERTIES IMPORTED_LOCATION ${bcm2835_dir})
 # Link libraries
 target_link_libraries(multi_half_bridge_py PUBLIC
     bcm2835
-    cap         
+    multi-half-bridge-corelib      
+    cap   
 )
 
 # EXAMPLE_VERSION_INFO is defined by setup.py and passed into the C++ code as a
